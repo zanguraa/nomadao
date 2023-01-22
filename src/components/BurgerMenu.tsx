@@ -27,9 +27,9 @@ const BurgerMenu: React.FC<Props> = ({ isOpen, setIsOpen }) => {
       <BurgerContainer>
         {isOpen && (
           <NavList>
-            <LinkContianer to="/main">{t("main")}</LinkContianer>
-            <LinkContianer to="/about">{t("aboutUs")}</LinkContianer>
-            <LinkContianer to="/nft">{t("nft")}</LinkContianer>
+            <LinkContianer to="/main">{t("header.main")}</LinkContianer>
+            <LinkContianer to="/about">{t("header.aboutUs")}</LinkContianer>
+            <LinkContianer to="/nft">{t("header.nft")}</LinkContianer>
             <li>
               {" "}
               <select value={currentLanguage} onChange={handleChange}>

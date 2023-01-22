@@ -2,10 +2,11 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import Header from "./components/Header";
 import i18next from "i18next";
-import { initReactI18next } from "react-i18next";
+import { initReactI18next, useTranslation } from "react-i18next";
 import geo from "./locales/geo.json";
 import eng from "./locales/eng.json";
 import Item from "./components/Item";
+import ModalCart from "./components/ModalCart";
 
 i18next.use(initReactI18next).init({
   fallbackLng: "en",
@@ -16,16 +17,42 @@ i18next.use(initReactI18next).init({
   },
 });
 
+
+
 function App() {
+
+  // const [title, setTitle] = useState<string >("")
   const [isOpen, setIsOpen] = useState(false);
+  const [cart, setCart] = useState(false)
+
+
+ 
+
   return (
+    
     <Container>
-      <Header isOpen={isOpen} setIsOpen={setIsOpen} />
+      <Header isOpen={isOpen} setCart={setCart} cart={cart} setIsOpen={setIsOpen} />
+    {cart && <ModalCart  />} 
+
+      <Item
+        title={"title"}
+        description="    Buy and sell Steam items without transferring them to DMarket. Avoid one trade hold period during each trade and so reduce the total cooldown by half. Use item in the game until it’s sold.
+"
+      />
       <Item
         title="satauri"
         description="    Buy and sell Steam items without transferring them to DMarket. Avoid one trade hold period during each trade and so reduce the total cooldown by half. Use item in the game until it’s sold.
 "
-        picture="foto.ge"
+/>
+      <Item
+        title="satauri"
+        description="    Buy and sell Steam items without transferring them to DMarket. Avoid one trade hold period during each trade and so reduce the total cooldown by half. Use item in the game until it’s sold.
+"
+      />
+      <Item
+        title="satauri"
+        description="    Buy and sell Steam items without transferring them to DMarket. Avoid one trade hold period during each trade and so reduce the total cooldown by half. Use item in the game until it’s sold.
+"
       />
     </Container>
   );

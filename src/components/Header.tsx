@@ -25,10 +25,12 @@ interface Iprops {
 
 interface OpenProps {
   isOpen: boolean;
+  cart: boolean
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  setCart: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-const Header = ({ isOpen, setIsOpen }: OpenProps) => {
+const Header = ({ isOpen, setIsOpen, setCart, cart }: OpenProps) => {
   const { t } = useTranslation();
 
   const currentLanguage = i18next.language;
@@ -43,9 +45,9 @@ const Header = ({ isOpen, setIsOpen }: OpenProps) => {
         <Logo src={LogoImage} alt="logo" />
 
         <NavContainer>
-          <LinkContianer to="/main">{t("main")}</LinkContianer>
-          <LinkContianer to="/about">{t("aboutUs")}</LinkContianer>
-          <LinkContianer to="/nft">{t("nft")}</LinkContianer>
+          <LinkContianer to="/main">{t("header.main")}</LinkContianer>
+          <LinkContianer to="/about">{t("header.aboutUs")}</LinkContianer>
+          <LinkContianer to="/nft">{t("header.nft")}</LinkContianer>
           <li>
             <select
               style={{
@@ -66,13 +68,16 @@ const Header = ({ isOpen, setIsOpen }: OpenProps) => {
       </LeftSide>
 
       <RightSide>
-        <Basket src={BasketLogo} alt="basket" />
+        <Basket onClick={() => setCart(!cart)} src={BasketLogo} alt="basket" />
         <User src={ImageLogo} alt="user" />
       </RightSide>
 
       {!isOpen && (
         <BurgerImg
-          onClick={() => setIsOpen(!isOpen)}
+          onClick={() => 
+            {setIsOpen(!isOpen)
+            setCart(false)
+            }}
           src={burger}
           alt="burger-menu"
         />
@@ -203,10 +208,11 @@ const User = styled.img`
 const LinkContianer = styled(Link)`
   text-decoration: none;
   color: white;
+  padding: 10px;
+
   font-weight: 700;
   :hover{
     background-color: #415bb1;
     border: 1px solid #415bb1;
-    padding: 10px;
   }
 `;

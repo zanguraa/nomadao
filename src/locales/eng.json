@@ -1,5 +1,13 @@
 {
+  "header": {
     "main": "Main",
     "aboutUs": "About-us",
     "nft": "NFT"
+  },
+
+  "item": {
+    "title": "title",
+    "description": "item description, some long text for description",
+    "addCart": "add to cart"
   }
+}

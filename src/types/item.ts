@@ -1,6 +1,6 @@
+import { MouseEventHandler } from "react";
 
 export interface ItemProps {
-    title: string;
+    title: string | null;
     description: string;
-    picture: string;
 }
