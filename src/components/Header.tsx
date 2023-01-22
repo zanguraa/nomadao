@@ -9,6 +9,7 @@ import ImageLogo from "../assets/image-avatar.png";
 import { useTranslation } from "react-i18next";
 import i18next from "i18next";
 import { Link } from "react-router-dom";
+import { count } from "console";
 
 interface Iprops {
   georgian: {
@@ -25,12 +26,19 @@ interface Iprops {
 
 interface OpenProps {
   isOpen: boolean;
-  cart: boolean
+  cart: boolean;
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>;
   setCart: React.Dispatch<React.SetStateAction<boolean>>;
+  quantity: number;
 }
 
-const Header = ({ isOpen, setIsOpen, setCart, cart }: OpenProps) => {
+const Header = ({
+  isOpen,
+  setIsOpen,
+  setCart,
+  cart,
+  quantity,
+}: OpenProps) => {
   const { t } = useTranslation();
 
   const currentLanguage = i18next.language;
@@ -68,16 +76,19 @@ const Header = ({ isOpen, setIsOpen, setCart, cart }: OpenProps) => {
       </LeftSide>
 
       <RightSide>
-        <Basket onClick={() => setCart(!cart)} src={BasketLogo} alt="basket" />
+        <Basket>
+          <img onClick={() => setCart(!cart)} src={BasketLogo} alt="basket" />
+          {quantity > 0 && <Quantity>{quantity}</Quantity>}
+        </Basket>
         <User src={ImageLogo} alt="user" />
       </RightSide>
 
       {!isOpen && (
         <BurgerImg
-          onClick={() => 
-            {setIsOpen(!isOpen)
-            setCart(false)
-            }}
+          onClick={() => {
+            setIsOpen(!isOpen);
+            setCart(false);
+          }}
           src={burger}
           alt="burger-menu"
         />
@@ -111,7 +122,6 @@ const Container = styled.div`
   @media screen and (min-width: 1440px) {
     max-width: 1440px;
     min-width: 1440px;
-    
   }
 `;
 
@@ -158,7 +168,7 @@ const BurgerImg = styled.img`
 `;
 
 const Logo = styled.img`
-  width: 150px;
+  width: 160px;
   display: block !important;
   @media screen and (min-width: 1440px) {
     width: 200px;
@@ -177,18 +187,41 @@ const NavContainer = styled.ul`
   }
 `;
 
-const Basket = styled.img`
-  width: 30px;
-  height: 30px;
-  display: none;
-  
+const Basket = styled.div`
+  position: relative;
+  img {
+    width: 30px;
+    height: 30px;
+    display: none;
+  }
   @media screen and (min-width: 768px) {
-    display: block;
+    img {
+      display: block;
+    }
   }
   @media screen and (min-width: 1440px) {
-    width: 50px;
-    height: 50px;
+    img {
+      width: 40px;
+      height: 40px;
+    }
   }
+`;
+
+const Quantity = styled.div`
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: red;
+  font-size: 14px;
+  font-weight: 700;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  width: 19px;
+  height: 17px;
+  background-color: white;
 `;
 
 const User = styled.img`
@@ -211,7 +244,7 @@ const LinkContianer = styled(Link)`
   padding: 10px;
 
   font-weight: 700;
-  :hover{
+  :hover {
     background-color: #415bb1;
     border: 1px solid #415bb1;
   }

@@ -5,9 +5,35 @@
     "nft": "NFT"
   },
 
-  "item": {
-    "title": "title",
-    "description": "item description, some long text for description",
-    "addCart": "add to cart"
+  "items": [
+    {
+      "title": "Product 1",
+      "description": "First product description, first product description, first product description.",
+      "price": 250,
+      "previusPrice": 500
+    },
+    {
+      "title": "Product 2",
+      "description": "Second product description, second product description, second product description.",
+      "price": 135,
+      "previusPrice": 270
+    },
+    {
+      "title": "Product 3",
+      "description": "Third Product Description Third Product Description Third Product Description",
+      "price": 175,
+      "previusPrice": 350
+    },
+
+    {
+      "title": "Product 4",
+      "description": "Fourth Product Description Fourth Product Description Fourth Product Description.",
+      "price": 100,
+      "previusPrice": 200
+    }
+  ],
+  "main": {
+    "addBasket": "add to basket",
+    "basket": "basket"
   }
 }

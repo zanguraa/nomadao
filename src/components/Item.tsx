@@ -1,10 +1,12 @@
+import { t } from "i18next";
 import React, { useState } from "react";
 import styled from "styled-components";
 import NFT1 from "../assets/nfts/nft1.avif";
 import { ItemProps } from "../types/item";
 import ItemCount from "./ItemCount";
 
-const Item = ({ title, description }: ItemProps) => {
+const Item = ({ title, description, price, previusPrice, setQuantity, quantity, cartItems, setCartItems }: ItemProps) => {
+
   const [count, setCount] = useState<number>(0);
 
   const plusHandler: React.MouseEventHandler = () => {
@@ -19,6 +21,29 @@ const Item = ({ title, description }: ItemProps) => {
     }
   };
 
+  const addHandler = () => {
+    if(count === 0) return
+    if (cartItems.find(item => item.title === title)) {
+      setCartItems(
+        cartItems.map(item => {
+          if (item.title === title) {
+            item.quantity += count;
+          }
+          return item
+        })
+      )
+    } else {
+      const newItem = {
+        title,
+        quantity: count,
+        price: 100
+      }
+      
+      setCartItems([...cartItems, newItem])
+    }
+
+  }
+
   return (
     <ItemContainer>
       <LeftSide>
@@ -31,23 +56,22 @@ const Item = ({ title, description }: ItemProps) => {
         </TextContainer>
         <PriceContainer>
       <div style={{display: "flex", alignItems: "center", gap: "20px"}}>
-        <h1 style={{fontWeight: "700"}}>$125</h1>
+        <h1 style={{fontWeight: "700"}}>${price}</h1>
         <div style={{borderRadius: "24px", padding: "10px", backgroundColor: "red"}}>
         <h4 style={{fontWeight: "700", fontSize: "25px"}} >
           50%
         </h4>
         </div>
       </div>
-      <h2 style={{fontSize: "20px", fontWeight: "300", textDecoration: "line-through"}}>$250</h2>
+      <h2 style={{fontSize: "20px", fontWeight: "300", textDecoration: "line-through"}}>${previusPrice}</h2>
         </PriceContainer>
         <CountContainer>
           <ItemCount
             minusHandler={minusHandler}
             plusHandler={plusHandler}
             count={count}
-            setCount={setCount}
           />
-          <PurchaseButton>Add to cart</PurchaseButton>
+          <PurchaseButton onClick={addHandler}>{t("main.addBasket")}</PurchaseButton>
         </CountContainer>
       </RightSide>
     </ItemContainer>
@@ -130,7 +154,7 @@ const PriceContainer = styled.div`
 `
 
 const PurchaseButton = styled.button`
-  background-color: #4076f8;
+  background-color: #0f2969;
   max-width: 250px;
   font-weight: 800;
   display: flex;
@@ -142,6 +166,11 @@ const PurchaseButton = styled.button`
   cursor: pointer;
   color: white;
   text-transform: uppercase;
+  &:hover{
+    background-color: #2953bd;
+  transition: all ease-in 0.5s;
+
+  }
 `;
 
 const CountContainer = styled.div`

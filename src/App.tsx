@@ -17,43 +17,48 @@ i18next.use(initReactI18next).init({
   },
 });
 
-
+type Item = {
+  previusPrice: number;
+  price: number;
+  title: string;
+  description: string;
+}
 
 function App() {
-
   // const [title, setTitle] = useState<string >("")
   const [isOpen, setIsOpen] = useState(false);
-  const [cart, setCart] = useState(false)
+  const [cart, setCart] = useState(false);
+  const [quantity, setQuantity] = useState(0);
+  const [cartItems, setCartItems] = useState([]);
+  const { t, i18n, ready } = useTranslation();
+  const items = t('items', { returnObjects: true }) as Item[];
 
-
- 
+  console.log(cartItems)
 
   return (
-    
     <Container>
-      <Header isOpen={isOpen} setCart={setCart} cart={cart} setIsOpen={setIsOpen} />
-    {cart && <ModalCart  />} 
+      <Header
+        isOpen={isOpen}
+        setCart={setCart}
+        cart={cart}
+        setIsOpen={setIsOpen}
+        quantity={quantity}
+      />
+      {cart && <ModalCart cartItems={cartItems} />}
 
-      <Item
-        title={"title"}
-        description="    Buy and sell Steam items without transferring them to DMarket. Avoid one trade hold period during each trade and so reduce the total cooldown by half. Use item in the game until it’s sold.
-"
+      {items.map((item: Item) => (
+        <Item
+          quantity={quantity}
+          setQuantity={setQuantity}
+          title={item.title}
+          description={item.description}
+          price={item.price}
+          previusPrice={item.previusPrice}
+          setCartItems={setCartItems}
+          cartItems={cartItems}
       />
-      <Item
-        title="satauri"
-        description="    Buy and sell Steam items without transferring them to DMarket. Avoid one trade hold period during each trade and so reduce the total cooldown by half. Use item in the game until it’s sold.
-"
-/>
-      <Item
-        title="satauri"
-        description="    Buy and sell Steam items without transferring them to DMarket. Avoid one trade hold period during each trade and so reduce the total cooldown by half. Use item in the game until it’s sold.
-"
-      />
-      <Item
-        title="satauri"
-        description="    Buy and sell Steam items without transferring them to DMarket. Avoid one trade hold period during each trade and so reduce the total cooldown by half. Use item in the game until it’s sold.
-"
-      />
+      ))}
+      
     </Container>
   );
 }
@@ -65,7 +70,7 @@ const Container = styled.div`
   flex-direction: column;
   padding: 20px;
   gap: 100px;
-  background: linear-gradient(#e66465, #9198e5);
+  background: #e66465;
   min-height: 100vh;
   font-size: calc(10px + 2vmin);
   color: white;

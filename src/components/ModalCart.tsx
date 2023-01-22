@@ -1,15 +1,19 @@
 import styled from "styled-components";
 
 
-interface Props {
-  cart: boolean
-}
-const ModalCart = () => {
+const ModalCart = ({cartItems}: any) => {
   return (
   <CartContainer>
 
  <h2>Cart</h2>
 <hr />
+{cartItems.map((item: string, index: number) => {
+  return(
+<div style={{display: "flex", gap: "10px", alignItems: "center"}}>
+  <h5>{item.title}</h5>
+</div>
+  )
+})}
 </CartContainer>
 
 )

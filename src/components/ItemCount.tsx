@@ -7,10 +7,9 @@ interface Props {
     count: number;
     plusHandler: MouseEventHandler;
     minusHandler: MouseEventHandler
-    setCount: any;
 }
 
-const ItemCount = ({plusHandler, minusHandler, count, setCount}: Props) =>  {
+const ItemCount = ({plusHandler, minusHandler, count}: Props) =>  {
 
 
   return (
