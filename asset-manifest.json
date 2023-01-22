@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/nomadao-test/static/css/main.080e1fe6.css",
-    "main.js": "/nomadao-test/static/js/main.c260bcba.js",
-    "static/media/nft1.avif": "/nomadao-test/static/media/nft1.c9886159df43a60f86ec.avif",
-    "index.html": "/nomadao-test/index.html",
-    "static/media/icon-plus.svg": "/nomadao-test/static/media/icon-plus.b297868c5f938612f4f099f9f9d73aea.svg",
-    "static/media/icon-minus.svg": "/nomadao-test/static/media/icon-minus.f5073aa8273785ecf6b7811630782736.svg",
-    "static/media/close.svg": "/nomadao-test/static/media/close.b94c7b05eb4c5b192b68f102237568a0.svg",
-    "main.080e1fe6.css.map": "/nomadao-test/static/css/main.080e1fe6.css.map",
-    "main.c260bcba.js.map": "/nomadao-test/static/js/main.c260bcba.js.map"
+    "main.css": "/nomadao/static/css/main.080e1fe6.css",
+    "main.js": "/nomadao/static/js/main.b21f668b.js",
+    "static/media/nft1.avif": "/nomadao/static/media/nft1.c9886159df43a60f86ec.avif",
+    "index.html": "/nomadao/index.html",
+    "static/media/icon-plus.svg": "/nomadao/static/media/icon-plus.b297868c5f938612f4f099f9f9d73aea.svg",
+    "static/media/icon-minus.svg": "/nomadao/static/media/icon-minus.f5073aa8273785ecf6b7811630782736.svg",
+    "static/media/close.svg": "/nomadao/static/media/close.b94c7b05eb4c5b192b68f102237568a0.svg",
+    "main.080e1fe6.css.map": "/nomadao/static/css/main.080e1fe6.css.map",
+    "main.b21f668b.js.map": "/nomadao/static/js/main.b21f668b.js.map"
   },
   "entrypoints": [
     "static/css/main.080e1fe6.css",
-    "static/js/main.c260bcba.js"
+    "static/js/main.b21f668b.js"
   ]
 }
