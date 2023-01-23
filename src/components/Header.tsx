@@ -32,13 +32,7 @@ interface OpenProps {
   quantity: number;
 }
 
-const Header = ({
-  isOpen,
-  setIsOpen,
-  setCart,
-  cart,
-  quantity,
-}: OpenProps) => {
+const Header = ({ isOpen, setIsOpen, setCart, cart, quantity }: OpenProps) => {
   const { t } = useTranslation();
 
   const currentLanguage = i18next.language;
@@ -192,7 +186,6 @@ const Basket = styled.div`
   img {
     width: 30px;
     height: 30px;
-    display: none;
   }
   @media screen and (min-width: 768px) {
     img {

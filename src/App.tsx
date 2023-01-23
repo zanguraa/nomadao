@@ -7,6 +7,7 @@ import geo from "./locales/geo.json";
 import eng from "./locales/eng.json";
 import Item from "./components/Item";
 import ModalCart from "./components/ModalCart";
+import { CartItem } from "./types/item";
 
 i18next.use(initReactI18next).init({
   fallbackLng: "en",
@@ -22,18 +23,18 @@ type Item = {
   price: number;
   title: string;
   description: string;
-}
+  image: string;
+};
 
 function App() {
-  // const [title, setTitle] = useState<string >("")
   const [isOpen, setIsOpen] = useState(false);
   const [cart, setCart] = useState(false);
-  const [quantity, setQuantity] = useState(0);
   const [cartItems, setCartItems] = useState([]);
   const { t, i18n, ready } = useTranslation();
-  const items = t('items', { returnObjects: true }) as Item[];
+  const items = t("items", { returnObjects: true }) as Item[];
 
-  console.log(cartItems)
+  const totalQuantity = cartItems.reduce((a, b: CartItem) => a + b.quantity, 0);
+  console.log(totalQuantity);
 
   return (
     <Container>
@@ -42,23 +43,22 @@ function App() {
         setCart={setCart}
         cart={cart}
         setIsOpen={setIsOpen}
-        quantity={quantity}
+        quantity={totalQuantity}
       />
-      {cart && <ModalCart cartItems={cartItems} />}
+      {cart && <ModalCart cartItems={cartItems} setCartItems={setCartItems} />}
 
-      {items.map((item: Item) => (
+      {items.map((item: Item, index: number) => (
         <Item
-          quantity={quantity}
-          setQuantity={setQuantity}
+          key={index}
           title={item.title}
           description={item.description}
           price={item.price}
+          image={item.image}
           previusPrice={item.previusPrice}
           setCartItems={setCartItems}
           cartItems={cartItems}
-      />
+        />
       ))}
-      
     </Container>
   );
 }

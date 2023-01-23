@@ -1,24 +1,44 @@
 import styled from "styled-components";
+import Close from "../assets/close.svg"
 
+interface cartProps {
+  cartItems:never[],
+  setCartItems:React.Dispatch<React.SetStateAction<never[]>>
+}
+const ModalCart = ({cartItems,setCartItems}: cartProps) => {
+  const totalPrice = cartItems.reduce((acc:any, item:any)=>acc + item.price * item.quantity, 0)
+  console.log("total price", totalPrice)
 
-const ModalCart = ({cartItems}: any) => {
+const deleteHandler = (title:any) => {
+  const updatedItems = cartItems.filter((item:any) => item.title !== title);
+  setCartItems(updatedItems);
+};
+
   return (
   <CartContainer>
 
+
  <h2>Cart</h2>
-<hr />
+<hr style={{margin: "10px"}} />
 {cartItems.map((item: any, index: number) => {
+  console.log(item.image)
+
   return(
-<div style={{display: "flex", gap: "10px", alignItems: "center"}}>
+<div key={index} style={{display: "flex", gap: "10px", alignItems: "flex-start", padding: "10px 0", borderBottom: "1px solid blue", flexDirection: "column"}}>
+ <div style={{display: "flex", gap: "10px", alignItems: "center", padding: "10px 0"}}>
+ <img style={{width: "30px", height: "30px"}} src={item.image} alt="product" />
   <h5>{item.title}</h5>
+  <p>{item.quantity}</p>
+  <p>${item.quantity * item.price}</p></div>
+  <button style={{backgroundColor: "#2953bd", color: "white", border: "none", padding:"5px 10px", borderRadius: "24px", fontWeight: "700"}} onClick={()=>deleteHandler(item.title)}>delete</button>
+
+  
 </div>
   )
 })}
+<h1 style={{fontWeight: "800"}}>Total: {totalPrice}</h1>
 </CartContainer>
-
-)
-  
-
+  )
 }
 
 export default ModalCart;
@@ -39,7 +59,7 @@ const CartContainer = styled.div`
   color: #5191fa;
 
   h2 {
-    font-size: 20px;
+    font-size: 17px;
     text-transform: uppercase;
     font-weight: 800;
     margin-bottom: 10px;
@@ -49,5 +69,8 @@ const CartContainer = styled.div`
     border: 1px solid #4076f8;
     width: 90%;
     margin: auto;
+  }
+  @media screen and (min-width: 1024px) {
+    width: 400px;
   }
 `;

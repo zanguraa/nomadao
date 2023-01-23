@@ -1,14 +1,20 @@
 import { t } from "i18next";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import NFT1 from "../assets/nfts/nft1.avif";
 import { ItemProps } from "../types/item";
 import ItemCount from "./ItemCount";
 
-const Item = ({ title, description, price, previusPrice, setQuantity, quantity, cartItems, setCartItems }: ItemProps) => {
-
+const Item = ({
+  title,
+  description,
+  price,
+  previusPrice,
+  cartItems,
+  setCartItems,
+  image,
+}: ItemProps) => {
   const [count, setCount] = useState<number>(0);
-
   const plusHandler: React.MouseEventHandler = () => {
     setCount(count + 1);
   };
@@ -22,48 +28,69 @@ const Item = ({ title, description, price, previusPrice, setQuantity, quantity, 
   };
 
   const addHandler = () => {
-    if(count === 0) return
-    if (cartItems.find(item => item.title === title)) {
+    if (count === 0) return;
+    if (cartItems.find((item) => item.title === title)) {
       setCartItems(
-        cartItems.map(item => {
+        cartItems.map((item) => {
           if (item.title === title) {
             item.quantity += count;
           }
-          return item
+          return item;
         })
-      )
+      );
     } else {
       const newItem = {
         title,
         quantity: count,
-        price: 100
-      }
-      
-      setCartItems([...cartItems, newItem])
-    }
+        price,
+        image,
+      };
 
-  }
+      setCartItems([...cartItems, newItem]);
+    }
+    setCount(0);
+  };
+
+  useEffect(() => {
+    const totalQuantity = cartItems.reduce(
+      (accumulator, currentValue) => accumulator + currentValue.price,
+      0
+    );
+    console.log("total", totalQuantity);
+  }, [cartItems]);
 
   return (
     <ItemContainer>
       <LeftSide>
-        <NftImg src={NFT1} alt="nft" />
+        <NftImg src={process.env.PUBLIC_URL + image} alt="nft" />
       </LeftSide>{" "}
       <RightSide>
         <TextContainer>
-        <h2>{title}</h2>
-        <p>{description}</p>
+          <h2>{title}</h2>
+          <p>{description}</p>
         </TextContainer>
         <PriceContainer>
-      <div style={{display: "flex", alignItems: "center", gap: "20px"}}>
-        <h1 style={{fontWeight: "700"}}>${price}</h1>
-        <div style={{borderRadius: "24px", padding: "10px", backgroundColor: "red"}}>
-        <h4 style={{fontWeight: "700", fontSize: "25px"}} >
-          50%
-        </h4>
-        </div>
-      </div>
-      <h2 style={{fontSize: "20px", fontWeight: "300", textDecoration: "line-through"}}>${previusPrice}</h2>
+          <div style={{ display: "flex", alignItems: "center", gap: "20px" }}>
+            <h1 style={{ fontWeight: "700" }}>${price}</h1>
+            <div
+              style={{
+                borderRadius: "24px",
+                padding: "10px",
+                backgroundColor: "red",
+              }}
+            >
+              <h4 style={{ fontWeight: "700", fontSize: "25px" }}>50%</h4>
+            </div>
+          </div>
+          <h2
+            style={{
+              fontSize: "20px",
+              fontWeight: "300",
+              textDecoration: "line-through",
+            }}
+          >
+            ${previusPrice}
+          </h2>
         </PriceContainer>
         <CountContainer>
           <ItemCount
@@ -71,7 +98,9 @@ const Item = ({ title, description, price, previusPrice, setQuantity, quantity, 
             plusHandler={plusHandler}
             count={count}
           />
-          <PurchaseButton onClick={addHandler}>{t("main.addBasket")}</PurchaseButton>
+          <PurchaseButton onClick={addHandler}>
+            {t("main.addBasket")}
+          </PurchaseButton>
         </CountContainer>
       </RightSide>
     </ItemContainer>
@@ -143,15 +172,14 @@ const TextContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 20px;
-`
+`;
 
 const PriceContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 10px;
   color: white;
- 
-`
+`;
 
 const PurchaseButton = styled.button`
   background-color: #0f2969;
@@ -166,10 +194,9 @@ const PurchaseButton = styled.button`
   cursor: pointer;
   color: white;
   text-transform: uppercase;
-  &:hover{
+  &:hover {
     background-color: #2953bd;
-  transition: all ease-in 0.5s;
-
+    transition: all ease-in 0.5s;
   }
 `;
 
@@ -178,7 +205,7 @@ const CountContainer = styled.div`
   align-items: center;
   width: 300px;
   justify-content: space-between;
-  p{
+  p {
     color: white;
   }
 `;

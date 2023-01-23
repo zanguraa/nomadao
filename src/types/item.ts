@@ -5,10 +5,9 @@ export interface ItemProps {
     description: string;
     price: number;
     previusPrice: number;
-    quantity: number;
-    setQuantity: any;
     setCartItems: any;
     cartItems: CartItem[]
+    image: string;
 }
 
 export interface CartItem {
@@ -16,4 +15,5 @@ export interface CartItem {
     quantity: number;
     price: number;
     previusPrice: number;
+    image: string;
 }

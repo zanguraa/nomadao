@@ -4,16 +4,14 @@ import Minus from "../assets/icon-minus.svg";
 import Plus from "../assets/icon-plus.svg";
 
 interface Props {
-    count: number;
-    plusHandler: MouseEventHandler;
-    minusHandler: MouseEventHandler
+  count: number;
+  plusHandler: MouseEventHandler;
+  minusHandler: MouseEventHandler;
 }
 
-const ItemCount = ({plusHandler, minusHandler, count}: Props) =>  {
-
-
+const ItemCount = ({ plusHandler, minusHandler, count }: Props) => {
   return (
-    <Container >
+    <Container>
       <img
         className=" cursor-pointer"
         onClick={minusHandler}
@@ -29,21 +27,21 @@ const ItemCount = ({plusHandler, minusHandler, count}: Props) =>  {
       />
     </Container>
   );
-}
+};
 
 export default ItemCount;
 
 const Container = styled.div`
-    display: flex;
-    justify-content: space-between;
-    width: 80px;
-    align-items: center;
-    p{
+  display: flex;
+  justify-content: space-between;
+  width: 80px;
+  align-items: center;
+  p {
     color: white;
-font-weight: 800;
-    }
-    img{
-      padding: 10px;
-      cursor: pointer;
-    }
-`
+    font-weight: 800;
+  }
+  img {
+    padding: 10px;
+    cursor: pointer;
+  }
+`;

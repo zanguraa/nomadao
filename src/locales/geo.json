@@ -8,18 +8,21 @@
     {
       "title": "პროდუქტი 1",
       "description": "პირველი პროდუქტის აღწერა,პირველი პროდუქტის აღწერა,პირველი პროდუქტის აღწერა.",
+      "image": "./assets/nfts/nft1.avif",
       "price": 250,
       "previusPrice": 500
     },
     {
       "title": "პროდუქტი 2",
       "description": "მეორე პროდუქტის აღწერა, მეორე პროდუქტის მეორე, მეორე პროდუქტის აღწერა.",
+      "image": "./assets/nfts/nft2.avif",
       "price": 135,
       "previusPrice": 270
     },
     {
       "title": "პროდუქტი 3",
       "description": "მესამე პროდუქტის აღწერა, მესამე პროდუქტის აღწერა, მესამე პროდუქტის აღწერა.",
+      "image": "./assets/nfts/nft12.avif",
       "price": 175,
       "previusPrice": 350
     },
@@ -27,6 +30,7 @@
     {
       "title": "პროდუქტი 4",
       "description": "მეოთხე პროდუქტის აღწერა, მეოთხე პროდუქტის აღწერა, მეოთხე პროდუქტის აღწერა.",
+      "image": "./assets/nfts/nft1.avif",
       "price": 100,
       "previusPrice": 200
     }
