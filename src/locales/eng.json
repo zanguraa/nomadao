@@ -38,6 +38,8 @@
   ],
   "main": {
     "addBasket": "add to basket",
-    "basket": "basket"
+    "basket": "basket",
+    "total": "total",
+    "delete": "delete"
   }
 }

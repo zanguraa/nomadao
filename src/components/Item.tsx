@@ -55,7 +55,6 @@ const Item = ({
       (accumulator, currentValue) => accumulator + currentValue.price,
       0
     );
-    console.log("total", totalQuantity);
   }, [cartItems]);
 
   return (
