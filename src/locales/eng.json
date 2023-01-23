@@ -9,7 +9,7 @@
     {
       "title": "Product 1",
       "description": "First product description, first product description, first product description.",
-      "image": "./assets/nfts/nft1.avif",
+      "image": "/assets/nfts/nft1.avif",
       "price": 250,
       "previusPrice": 500
     },
@@ -31,7 +31,7 @@
     {
       "title": "Product 4",
       "description": "Fourth Product Description Fourth Product Description Fourth Product Description.",
-      "image": "./assets/nfts/nft3.jpg",
+      "image": "/assets/nfts/nft3.jpg",
       "price": 100,
       "previusPrice": 200
     }
