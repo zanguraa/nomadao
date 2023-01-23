@@ -7,7 +7,7 @@ const ModalCart = ({cartItems}: any) => {
 
  <h2>Cart</h2>
 <hr />
-{cartItems.map((item: string, index: number) => {
+{cartItems.map((item: any, index: number) => {
   return(
 <div style={{display: "flex", gap: "10px", alignItems: "center"}}>
   <h5>{item.title}</h5>
