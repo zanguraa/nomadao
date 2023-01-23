@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/nomadao/static/css/main.080e1fe6.css",
-    "main.js": "/nomadao/static/js/main.c722e9ff.js",
+    "main.js": "/nomadao/static/js/main.d33c29ad.js",
     "index.html": "/nomadao/index.html",
     "static/media/icon-plus.svg": "/nomadao/static/media/icon-plus.b297868c5f938612f4f099f9f9d73aea.svg",
     "static/media/icon-minus.svg": "/nomadao/static/media/icon-minus.f5073aa8273785ecf6b7811630782736.svg",
     "static/media/close.svg": "/nomadao/static/media/close.dc6b7c51f8f5271ff9c464bf472b3c2c.svg",
     "main.080e1fe6.css.map": "/nomadao/static/css/main.080e1fe6.css.map",
-    "main.c722e9ff.js.map": "/nomadao/static/js/main.c722e9ff.js.map"
+    "main.d33c29ad.js.map": "/nomadao/static/js/main.d33c29ad.js.map"
   },
   "entrypoints": [
     "static/css/main.080e1fe6.css",
-    "static/js/main.c722e9ff.js"
+    "static/js/main.d33c29ad.js"
   ]
 }
