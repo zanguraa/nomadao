@@ -78,7 +78,8 @@ export default ModalCart;
 
 const CartContainer = styled.div`
   width: 335px;
-  height: 300px;
+ 
+  max-height: 100%;
   padding: 10px;
   z-index: 10;
   background-color: white;
