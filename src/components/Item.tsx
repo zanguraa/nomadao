@@ -1,7 +1,6 @@
 import { t } from "i18next";
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
-import NFT1 from "../assets/nfts/nft1.avif";
 import { ItemProps } from "../types/item";
 import ItemCount from "./ItemCount";
 
@@ -140,6 +139,7 @@ const NftImg = styled.img`
   width: 100%;
   max-width: 400px;
   max-height: 300px;
+  border-radius: 24px;
 `;
 
 const RightSide = styled.div`
